@@ -22,7 +22,7 @@ const NavLinks = async () => {
             <span className="text-lg transition-transform duration-200 group-hover:scale-110">
               {nav.icon}
             </span>
-            <span className="whitespace-nowrap font-bold">{nav.nameBn}</span>
+            <span className="whitespace-nowrap font">{nav.nameBn}</span>
           </div>
         ))}
       </div>
