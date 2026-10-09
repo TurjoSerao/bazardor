@@ -17,7 +17,7 @@ const NavLinks = async () => {
         {navLinks.map((nav) => (
           <div
             key={nav.id}
-            className="group flex shrink-0 cursor-pointer items-center gap-2 rounded px-4 py-2 text-sm font-medium text-gray-600 transition-all duration-200 hover:bg-green-50 hover:text-green-700"
+            className="group flex shrink-0 cursor-pointer items-center gap-2 rounded px-4  text-sm font-medium text-gray-600 transition-all duration-200 hover:bg-green-50 hover:text-green-700"
           >
             <span className="text-lg transition-transform duration-200 group-hover:scale-110">
               {nav.icon}
