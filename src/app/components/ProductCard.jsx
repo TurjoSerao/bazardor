@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const unitLabels = {
   kg: "কেজি",
   litre: "লিটার",
@@ -24,40 +26,42 @@ export default function ProductCard({ product }) {
     });
 
   return (
-    <article className="rounded-xl border border-[#E5ECE5] bg-white p-3 transition hover:border-[#C7DDC9] hover:shadow-sm sm:p-4">
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#F0F5F0] text-xl">
-          {product.image || product.categoryIcon || "🛒"}
+    <Link href={`/products/${product.id}`} className="block">
+      <article className="rounded-xl border border-[#E5ECE5] bg-white p-3 transition hover:border-[#C7DDC9] hover:shadow-sm sm:p-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#F0F5F0] text-xl">
+            {product.image || product.categoryIcon || "🛒"}
+          </div>
+
+          <div className="min-w-0 flex-1">
+            <h3 className="truncate text-sm font-bold text-[#1D271F]">
+              {product.nameBn}
+            </h3>
+            <p className="mt-0.5 truncate text-xs text-gray-500">
+              {product.categoryNameBn}
+            </p>
+          </div>
         </div>
 
-        <div className="min-w-0 flex-1">
-          <h3 className="truncate text-sm font-bold text-[#1D271F]">
-            {product.nameBn}
-          </h3>
-          <p className="mt-0.5 truncate text-xs text-gray-500">
-            {product.categoryNameBn}
-          </p>
-        </div>
-      </div>
+        <div className="mt-4 flex items-end justify-between gap-2">
+          <div>
+            <p className="text-xs text-gray-500">আজকের দাম</p>
+            <p className="mt-1 text-base font-extrabold text-[#1D271F]">
+              {formatNumber(product.today)} টাকা
+            </p>
+            <p className="mt-0.5 text-xs text-gray-500">
+              প্রতি {unitLabels[product.unit] ?? product.unit}
+            </p>
+          </div>
 
-      <div className="mt-4 flex items-end justify-between gap-2">
-        <div>
-          <p className="text-xs text-gray-500">আজকের দাম</p>
-          <p className="mt-1 text-base font-extrabold text-[#1D271F]">
-            {formatNumber(product.today)} টাকা
-          </p>
-          <p className="mt-0.5 text-xs text-gray-500">
-            প্রতি {unitLabels[product.unit] ?? product.unit}
-          </p>
+          <span
+            className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-1 text-[11px] font-bold ${color}`}
+            title={`দামের পরিবর্তন ${formatNumber(Math.abs(percentage))}%`}
+          >
+            {arrow} {formatNumber(Math.abs(percentage))}%
+          </span>
         </div>
-
-        <span
-          className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-1 text-[11px] font-bold ${color}`}
-          title={`দামের পরিবর্তন ${formatNumber(Math.abs(percentage))}%`}
-        >
-          {arrow} {formatNumber(Math.abs(percentage))}%
-        </span>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 }
