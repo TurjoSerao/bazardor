@@ -68,21 +68,21 @@ export default async function ProductDetails({ params }) {
         <section className="bg-white rounded-2xl p-5 ">
           <h2 className="text-sm font-bold">দামের সারসংক্ষেপ</h2>
           <div className="grid gap-3 mt-3 sm:grid-cols-3">
-            <div className="border rounded-xl p-4 space-y-2">
+            <div className="border border-gray-300 rounded-xl p-4 space-y-2">
               <p className="text-xs text-gray-500">সর্বনিম্ন দাম</p>
               <p className="text-xl font-bold text-green-700">
                 {bn(lowest)} টাকা
               </p>
               <p className="text-xs text-gray-500">সবচেয়ে কম দামের বাজার</p>
             </div>
-            <div className="border rounded-xl p-4 space-y-2">
+            <div className="border border-gray-300 rounded-xl p-4 space-y-2">
               <p className="text-xs text-gray-500">সর্বোচ্চ দাম</p>
               <p className="text-xl font-bold text-red-600">
                 {bn(highest)} টাকা
               </p>
               <p className="text-xs text-gray-500">সবচেয়ে বেশি দামের বাজার</p>
             </div>
-            <div className="border rounded-xl p-4 space-y-2">
+            <div className="border border-gray-300 rounded-xl p-4 space-y-2">
               <p className="text-xs text-gray-500">গড় দাম</p>
               <p className="text-xl font-bold text-green-700">
                 {bn(average)} টাকা
@@ -93,12 +93,12 @@ export default async function ProductDetails({ params }) {
         </section>
 
         {/* Market table */}
-        <section className="bg-white rounded-2xl p-5">
+        <section className="bg-white rounded-2xl p-5 border border-gray-300">
           <h2 className="text-sm font-bold">বাজারভিত্তিক আজকের দাম</h2>
           <div className="overflow-x-auto mt-3">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-xs text-gray-500 border-b">
+                <tr className="text-xs text-gray-500 border-b bg-green-50">
                   <th className="p-3 text-left">বাজার</th>
                   <th className="p-3 text-left">বিভাগ</th>
                   <th className="p-3 text-right">সর্বনিম্ন</th>

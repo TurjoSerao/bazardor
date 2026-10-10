@@ -5,7 +5,6 @@ export default async function CategoryPage({ params }) {
 
   const res = await fetch(
     `https://api.api-store.workers.dev/api/bazardor/products?category=${categoryId}`,
-    { next: { revalidate: 300 } },
   );
 
   if (!res.ok) throw new Error("Failed to fetch products");

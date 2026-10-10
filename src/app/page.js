@@ -56,17 +56,10 @@ export default async function Home() {
 
             <div className="flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
               <Link
-                href="/products"
+                href="/all-products"
                 className="rounded-lg bg-[#05893E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#046F32]"
               >
                 সব পণ্য দেখুন →
-              </Link>
-
-              <Link
-                href="/markets"
-                className="rounded-lg border border-[#DCE8DC] px-6 py-3 text-sm font-semibold text-[#1D271F] hover:bg-[#F0F5F0]"
-              >
-                বাজারের তথ্য
               </Link>
             </div>
 
