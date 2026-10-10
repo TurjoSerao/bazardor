@@ -15,11 +15,6 @@ const formatBengaliNumber = (value) =>
 async function getProducts() {
   const response = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/products",
-    {
-      next: {
-        revalidate: 300,
-      },
-    },
   );
 
   if (!response.ok) {
@@ -34,9 +29,7 @@ export default async function Marquee() {
 
   return (
     <div className="w-full overflow-hidden border-y border-[#DDE7DD] bg-white py-3">
-      {" "}
-      <MarqueeText direction="right" duration={25}>
-        {" "}
+      <MarqueeText direction="right" duration={5} pauseOnHover={true}>
         <div className="flex w-max items-center gap-8 whitespace-nowrap px-4">
           {products.map((product) => {
             const direction = product.change?.dir;
@@ -64,7 +57,7 @@ export default async function Marquee() {
                         : "text-gray-500"
                   }`}
                 >
-                  {direction === "up" ? "▲" : direction === "down" ? "▼" : "—"}{" "}
+                  {direction === "up" ? "▲" : direction === "down" ? "▼" : "—"}
                   {formatBengaliNumber(Math.abs(percentage))}%
                 </span>
               </div>

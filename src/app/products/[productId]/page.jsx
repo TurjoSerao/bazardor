@@ -122,6 +122,11 @@ export default async function ProductDetails({ params }) {
             </table>
           </div>
         </section>
+        <Link href={`/category/${product.category}`}>
+          <p>
+            {product.image} সব {product.categoryNameBn}
+          </p>
+        </Link>
       </div>
     </main>
   );

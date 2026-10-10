@@ -3,7 +3,6 @@ import Link from "next/link";
 const NavLinks = async () => {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/categories",
-    { next: { revalidate: 300 } },
   );
 
   if (!res.ok) throw new Error("Failed to fetch categories");
@@ -17,7 +16,7 @@ const NavLinks = async () => {
           className="flex shrink-0 items-center gap-2 rounded px-4 py-2 text-sm font-medium text-gray-600 hover:bg-green-50 hover:text-green-700"
           href="/"
         >
-          হোম{" "}
+          🏠 হোম
         </Link>
         {categories.map((category) => (
           <Link

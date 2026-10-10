@@ -7,7 +7,7 @@ const Header = () => {
   });
 
   return (
-    <header className="my-4 sm:my-5 px-4">
+    <header className="mt-4 sm:mt-5 px-4">
       <div className="max-w-7xl mx-auto flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center pb-2">
         {/* Logo and Date */}
         <div className="flex items-center gap-3">

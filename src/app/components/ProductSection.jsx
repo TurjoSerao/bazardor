@@ -18,10 +18,6 @@ export default function ProductSection({ title, products, type = "all" }) {
           <span className={color}>{arrow}</span>
           {title}
         </h2>
-
-        <span className="shrink-0 rounded-full bg-white px-3 py-1 text-xs font-semibold text-gray-500">
-          {products.length.toLocaleString("bn-BD")}টি
-        </span>
       </div>
 
       {products.length > 0 ? (
