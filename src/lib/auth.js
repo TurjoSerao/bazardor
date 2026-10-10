@@ -2,8 +2,28 @@ import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
-const client = new MongoClient(process.env.MONGODB_URL);
+const uri = process.env.MONGODB_URL;
+
+if (!uri) {
+  throw new Error("MONGODB_URL is not configured");
+}
+
+// Reuse the MongoDB client across requests in a warm server instance.
+const globalForMongo = globalThis;
+
+const client =
+  globalForMongo._mongoClient ??
+  (globalForMongo._mongoClient = new MongoClient(uri));
+
+const clientPromise =
+  globalForMongo._mongoClientPromise ??
+  (globalForMongo._mongoClientPromise = client.connect());
+
 const db = client.db("bazardor");
+
+export async function connectMongo() {
+  await clientPromise;
+}
 
 export const auth = betterAuth({
   emailAndPassword: {
@@ -15,6 +35,7 @@ export const auth = betterAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     },
+
     github: {
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -25,7 +46,6 @@ export const auth = betterAuth({
     accountLinking: {
       enabled: true,
       trustedProviders: ["google", "github"],
-      // Do not set disableImplicitLinking to true
     },
   },
 
