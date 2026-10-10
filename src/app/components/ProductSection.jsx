@@ -1,4 +1,5 @@
 import ProductCard from "./ProductCard";
+import ProductGrid from "./ProductGrid";
 
 export default function ProductSection({ title, products, type = "all" }) {
   const arrow = type === "up" ? "▲" : type === "down" ? "▼" : "";
@@ -24,15 +25,19 @@ export default function ProductSection({ title, products, type = "all" }) {
       </div>
 
       {products.length > 0 ? (
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        type === "all" ? (
+          <ProductGrid products={products} />
+        ) : (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )
       ) : (
-        <div className="rounded-xl border border-[#E5ECE5] bg-white p-6 text-center text-sm text-gray-500">
-          এই মুহূর্তে কোনো পণ্যের দাম পরিবর্তনের তথ্য নেই।
-        </div>
+        <p className="py-8 text-center text-gray-500">
+          কোনো পণ্য পাওয়া যায়নি।
+        </p>
       )}
     </section>
   );

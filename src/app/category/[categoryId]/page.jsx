@@ -1,4 +1,5 @@
 import ProductCard from "@/app/components/ProductCard";
+import ProductGrid from "@/app/components/ProductGrid";
 
 export default async function CategoryPage({ params }) {
   const { categoryId } = await params;
@@ -19,11 +20,7 @@ export default async function CategoryPage({ params }) {
         </h1>
 
         {products.length > 0 ? (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <ProductGrid products={products} />
         ) : (
           <p className="rounded-xl bg-white p-6 text-center text-gray-500">
             এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি।
