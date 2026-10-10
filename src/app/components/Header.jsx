@@ -26,13 +26,17 @@ const Header = () => {
 
         {/* Authentication Buttons */}
         <div className="flex items-center gap-3 sm:gap-5">
-          <button className="btn flex-1 sm:flex-none cursor-pointer hover:bg-slate-100 px-4 py-2 rounded">
-            সাইন ইন
-          </button>
+          <Link href="/signin">
+            <button className="btn flex-1 sm:flex-none cursor-pointer hover:bg-slate-100 px-4 py-2 rounded">
+              সাইন ইন
+            </button>
+          </Link>
 
-          <button className="btn flex-1 sm:flex-none cursor-pointer bg-[#05893E] hover:bg-[#046f32] px-4 py-2 rounded text-white">
-            সাইন আপ
-          </button>
+          <Link href="/signup">
+            <button className="btn flex-1 sm:flex-none cursor-pointer bg-[#05893E] hover:bg-[#046f32] px-4 py-2 rounded text-white">
+              সাইন আপ
+            </button>
+          </Link>
         </div>
       </div>
       <NavLinks />
