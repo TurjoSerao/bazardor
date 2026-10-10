@@ -1,5 +1,6 @@
 import React from "react";
 import NavLinks from "./NavLinks";
+import AuthButtons from "./AuthButtons";
 import Link from "next/link";
 
 const Header = () => {
@@ -8,37 +9,26 @@ const Header = () => {
   });
 
   return (
-    <header className="mt-4 sm:mt-5 px-4">
-      <div className="max-w-7xl mx-auto flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center pb-2">
+    <header className="mt-4 px-4 sm:mt-5">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 pb-2 sm:flex-row sm:items-center sm:justify-between">
         {/* Logo and Date */}
         <Link href="/">
           <div className="flex items-center gap-3">
-            <h2 className="flex items-center justify-center text-3xl bg-[#05893E] w-12 h-12 sm:w-14 sm:h-14 rounded text-white shrink-0">
+            <h2 className="flex h-12 w-12 shrink-0 items-center justify-center rounded bg-[#05893E] text-3xl text-white sm:h-14 sm:w-14">
               🛒
             </h2>
 
             <div>
-              <h2 className="text-lg sm:text-xl font-bold">বাজার দর</h2>
-              <p className="text-[11px] sm:text-xs text-gray-600">{date}</p>
+              <h2 className="text-lg font-bold sm:text-xl">বাজার দর</h2>
+              <p className="text-[11px] text-gray-600 sm:text-xs">{date}</p>
             </div>
           </div>
         </Link>
 
-        {/* Authentication Buttons */}
-        <div className="flex items-center gap-3 sm:gap-5">
-          <Link href="/signin">
-            <button className="btn flex-1 sm:flex-none cursor-pointer hover:bg-slate-100 px-4 py-2 rounded">
-              সাইন ইন
-            </button>
-          </Link>
-
-          <Link href="/signup">
-            <button className="btn flex-1 sm:flex-none cursor-pointer bg-[#05893E] hover:bg-[#046f32] px-4 py-2 rounded text-white">
-              সাইন আপ
-            </button>
-          </Link>
-        </div>
+        {/* Authentication Buttons or User Menu */}
+        <AuthButtons />
       </div>
+
       <NavLinks />
     </header>
   );
