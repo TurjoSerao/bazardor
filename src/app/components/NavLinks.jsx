@@ -1,29 +1,27 @@
-import React from "react";
+import Link from "next/link";
 
 const NavLinks = async () => {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/categories",
+    { next: { revalidate: 300 } },
   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch categories");
-  }
+  if (!res.ok) throw new Error("Failed to fetch categories");
 
-  const navLinks = await res.json();
+  const categories = await res.json();
 
   return (
     <nav className="w-full border-y border-gray-200 bg-white">
-      <div className="mx-auto flex w-full max-w-7xl items-center gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
-        {navLinks.map((nav) => (
-          <div
-            key={nav.id}
-            className="group flex shrink-0 cursor-pointer items-center gap-2 rounded px-4  text-sm font-medium text-gray-600 transition-all duration-200 hover:bg-green-50 hover:text-green-700"
+      <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
+        {categories.map((category) => (
+          <Link
+            key={category.id}
+            href={`/category/${category.slug}`}
+            className="flex shrink-0 items-center gap-2 rounded px-4 py-2 text-sm font-medium text-gray-600 hover:bg-green-50 hover:text-green-700"
           >
-            <span className="text-lg transition-transform duration-200 group-hover:scale-110">
-              {nav.icon}
-            </span>
-            <span className="whitespace-nowrap font">{nav.nameBn}</span>
-          </div>
+            <span className="text-lg">{category.icon}</span>
+            <span className="whitespace-nowrap">{category.nameBn}</span>
+          </Link>
         ))}
       </div>
     </nav>
