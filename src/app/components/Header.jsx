@@ -1,7 +1,6 @@
-import React from "react";
+import Link from "next/link";
 import NavLinks from "./NavLinks";
 import AuthButtons from "./AuthButtons";
-import Link from "next/link";
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -9,24 +8,31 @@ const Header = () => {
   });
 
   return (
-    <header className="mt-4 px-4 sm:mt-5">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 pb-2 sm:flex-row sm:items-center sm:justify-between">
-        <Link href="/">
-          <div className="flex items-center gap-3">
-            <h2 className="flex h-12 w-12 shrink-0 items-center justify-center rounded bg-[#05893E] text-3xl text-white sm:h-14 sm:w-14">
-              🛒
-            </h2>
+    <header className="mx-auto mt-3 w-full max-w-7xl px-3 sm:mt-5 sm:px-4">
+      {/* Top Header */}
+      <div className="flex min-w-0 items-center justify-between gap-3 pb-3 sm:pb-4">
+        {/* Logo and Date */}
+        <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-[#05893E] text-2xl text-white sm:h-14 sm:w-14 sm:text-3xl">
+            🛒
+          </div>
 
-            <div>
-              <h2 className="text-lg font-bold sm:text-xl">বাজার দর</h2>
-              <p className="text-[11px] text-gray-600 sm:text-xs">{date}</p>
-            </div>
+          <div className="min-w-0">
+            <h2 className="text-base font-bold sm:text-xl">বাজার দর</h2>
+
+            <p className="truncate text-[10px] text-gray-600 sm:text-xs">
+              {date}
+            </p>
           </div>
         </Link>
 
-        <AuthButtons />
+        {/* Authentication */}
+        <div className="shrink-0">
+          <AuthButtons />
+        </div>
       </div>
 
+      {/* Navigation */}
       <NavLinks />
     </header>
   );
